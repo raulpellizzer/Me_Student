@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBackground"
+    tools:context=".MainActivity">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:shrinkColumns="*"
+        android:stretchColumns="*"
+        android:background="@color/colorBackground">
+
+        <TableRow
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:paddingTop="50sp"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                android:text="@string/app_name">
+            </TextView>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:paddingTop="50sp"
+            android:gravity="center_horizontal">
+
+            <Button
+                android:id="@+id/btnAddDisc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btnAddDisc">
+            </Button>
+
+            <Button
+                android:id="@+id/btnAddNote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btnAddGrade">
+            </Button>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:paddingTop="25sp"
+            android:gravity="center_horizontal">
+
+            <Button
+                android:id="@+id/btnViewDisc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btnSearchDisc">
+            </Button>
+
+            <Button
+                android:id="@+id/btnRemoveDisc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btnRmvDisc">
+            </Button>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:paddingTop="25sp"
+            android:gravity="center_horizontal">
+
+            <Button
+                android:id="@+id/btnEditDisc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btnEditDisc">
+            </Button>
+
+            <Button
+                android:id="@+id/btnReset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btnReset">
+            </Button>
+
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:paddingTop="100sp">
+
+    </TextView>
+
+    <Button
+        android:id="@+id/btnAbout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/btnAbout">
+    </Button>
+
+</LinearLayout>
