@@ -19,7 +19,7 @@ import static com.example.mestudent.schema.dtbaseCONSTS.DISCIPLINE_COLUMN_NAME;
 import static com.example.mestudent.schema.dtbaseCONSTS.TEACHER_COLUMN_NAME;
 
 public class AddGrade extends AppCompatActivity {
-    int iDiscName, iTeacherName, iClassroom, iDate;
+    int iDiscName;
     PostDbHelper DB;
     private Spinner addGradeSpinner;
     Cursor c;
@@ -43,8 +43,6 @@ public class AddGrade extends AppCompatActivity {
         c = DB.readDisciplineData();
         iDiscName = c.getColumnIndex(DISCIPLINE_COLUMN_NAME);
 
-        String Teste = "";
-
         if(c != null) {
             for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
 //                Teste = Teste + c.getString(iDiscName) + "\n";
@@ -55,18 +53,6 @@ public class AddGrade extends AppCompatActivity {
 
             addGradeSpinner.setAdapter(adapterSpinner);
 
-
-
-
-//            Context context = getApplicationContext();
-//            CharSequence text = Teste;
-//            int duration = Toast.LENGTH_LONG;
-//
-//            Toast toast = Toast.makeText(context, text, duration);
-//            toast.show();
-
-
-
         } else {
             Context context = getApplicationContext();
             CharSequence text = "Error. Please, try again.";
@@ -75,6 +61,5 @@ public class AddGrade extends AppCompatActivity {
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         }
-
     }
 }
