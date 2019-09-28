@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 
 import static com.example.mestudent.schema.dtbaseCONSTS.CLASSROOM_COLUMN_NAME;
 import static com.example.mestudent.schema.dtbaseCONSTS.DATABASE_NAME;
@@ -24,14 +23,25 @@ public class PostDbHelper extends SQLiteOpenHelper {
 
     private static final String TEXT_TYPE = " TEXT";
     private static final String COMMA_SEP = ",";
-    private static final String SQL_CREATE_POSTS =
+    private static final String SQL_CREATE_USER =
             "CREATE TABLE " + LOGIN_TABLE_NAME + " (" +
                     schema.dtbaseCONSTS._ID + " INTEGER PRIMARY KEY," +
                     LOGIN_COLUMN_NAME + TEXT_TYPE + COMMA_SEP +
                     schema.dtbaseCONSTS.PASSWORD_COLUMN_NAME + TEXT_TYPE + " )";
 
-    private static final String SQL_DELETE_POSTS =
+    private static final String SQL_CREATE_DISCIPLINE =
+            "CREATE TABLE " + DISCIPLINE_TABLE_NAME + " (" +
+                    schema.dtbaseCONSTS._ID + " INTEGER PRIMARY KEY," +
+                    DISCIPLINE_COLUMN_NAME + TEXT_TYPE + COMMA_SEP +
+                    schema.dtbaseCONSTS.TEACHER_COLUMN_NAME + TEXT_TYPE + COMMA_SEP +
+                    CLASSROOM_COLUMN_NAME + TEXT_TYPE + COMMA_SEP +
+                    schema.dtbaseCONSTS.DATE_COLUMN_NAME + TEXT_TYPE + " )";
+
+    private static final String SQL_DELETE_USER =
             "DROP TABLE IF EXISTS " + LOGIN_TABLE_NAME;
+
+    private static final String SQL_DELETE_DISCIPLINES =
+            "DROP TABLE IF EXISTS " + DISCIPLINE_TABLE_NAME;
 
     public PostDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -42,11 +52,12 @@ public class PostDbHelper extends SQLiteOpenHelper {
     }
 
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(SQL_CREATE_POSTS);
+        db.execSQL(SQL_CREATE_USER);
+        db.execSQL(SQL_CREATE_DISCIPLINE);
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(SQL_DELETE_POSTS);
+        db.execSQL(SQL_DELETE_USER);
         onCreate(db);
     }
 

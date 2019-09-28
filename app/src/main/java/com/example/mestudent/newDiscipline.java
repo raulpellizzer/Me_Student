@@ -42,7 +42,7 @@ public class newDiscipline extends AppCompatActivity implements View.OnClickList
             classroom = findViewById(R.id.edtClassroom);
             date = findViewById(R.id.edtClassDay);
 
-            if ( (discName.getText().toString().length() == 0) || (teacherName.getText().toString().length() == 0) || (classroom.getText().toString().length() == 0) || (date.getText().toString().length() == 0) ) {
+            if ( (discName.getText().toString().length() > 4) && (teacherName.getText().toString().length() > 4) && (classroom.getText().toString().length() > 0) && (date.getText().toString().length() > 0) ) {
                 result = DB.insertNewDiscipline(discName.getText().toString(), teacherName.getText().toString(), classroom.getText().toString(), date.getText().toString());
 
                 if (result) {
@@ -60,6 +60,13 @@ public class newDiscipline extends AppCompatActivity implements View.OnClickList
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                 }
+            } else {
+                Toast.makeText(getApplicationContext(), "Error. Please, type again.", Toast.LENGTH_LONG).show();
+                discName.setText("");
+                teacherName.setText("");
+                classroom.setText("");
+                date.setText("");
+                return;
             }
         }
     }
