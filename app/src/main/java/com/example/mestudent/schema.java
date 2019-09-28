@@ -8,7 +8,7 @@ public class schema {
 
     public static class dtbaseCONSTS implements BaseColumns {
 
-        public static final int DATABASE_VERSION = 1;
+        public static final int DATABASE_VERSION = 2;
         public static final String DATABASE_NAME = "MeStudent.db";
 
         public static final String LOGIN_TABLE_NAME = "login";
@@ -21,5 +21,4 @@ public class schema {
         public static final String CLASSROOM_COLUMN_NAME = "classroom";
         public static final String DATE_COLUMN_NAME = "date";
     }
-
 }

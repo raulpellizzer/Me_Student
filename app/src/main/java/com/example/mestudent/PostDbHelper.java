@@ -58,6 +58,7 @@ public class PostDbHelper extends SQLiteOpenHelper {
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(SQL_DELETE_USER);
+        db.execSQL(SQL_DELETE_DISCIPLINES);
         onCreate(db);
     }
 
@@ -68,6 +69,7 @@ public class PostDbHelper extends SQLiteOpenHelper {
     public boolean insertUser(String login, String password) {
         try {
             SQLiteDatabase DB = this.getWritableDatabase();
+
             ContentValues contentValues = new ContentValues();
             contentValues.put(LOGIN_COLUMN_NAME, login);
             contentValues.put(PASSWORD_COLUMN_NAME, password);
