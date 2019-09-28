@@ -136,4 +136,22 @@ public class PostDbHelper extends SQLiteOpenHelper {
         }
     }
 
+    public Cursor readDisciplineData () {
+        Cursor c = null;
+        String discTableName;
+
+        discTableName = DISCIPLINE_TABLE_NAME;
+
+        try{
+            SQLiteDatabase DB = this.getReadableDatabase();
+            String[] columns = new String[]{DISCIPLINE_COLUMN_NAME, TEACHER_COLUMN_NAME, CLASSROOM_COLUMN_NAME, DATE_COLUMN_NAME};
+            c = DB.query(discTableName, columns, null, null, null, null, null);
+
+            return c;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return c;
+        }
+    }
+
 }
