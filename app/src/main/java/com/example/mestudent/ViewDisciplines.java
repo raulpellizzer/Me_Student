@@ -1,6 +1,7 @@
 package com.example.mestudent;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.database.Cursor;
@@ -34,10 +35,21 @@ public class ViewDisciplines extends AppCompatActivity {
 
         viewDisciplines = findViewById(R.id.recViewAllDisc);
 
+        viewDisciplines.setAdapter(new DisciplineAdapterRecycler(DisciplinesInfo.listar(), this));
+        RecyclerView.LayoutManager layout = new GridLayoutManager(ViewDisciplines.this, 2);
+
+        viewDisciplines.setLayoutManager(layout);
+
+
+
+
+
+
+
         c = DB.readDisciplineData();
         iDiscName = c.getColumnIndex(DISCIPLINE_COLUMN_NAME);
-        iDiscName = c.getColumnIndex(TEACHER_COLUMN_NAME);
-        iDiscName = c.getColumnIndex(CLASSROOM_COLUMN_NAME);
-        iDiscName = c.getColumnIndex(DATE_COLUMN_NAME);
+        iTeacherName = c.getColumnIndex(TEACHER_COLUMN_NAME);
+        iClassroom = c.getColumnIndex(CLASSROOM_COLUMN_NAME);
+        iDate = c.getColumnIndex(DATE_COLUMN_NAME);
     }
 }
