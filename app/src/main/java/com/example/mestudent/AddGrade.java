@@ -45,7 +45,6 @@ public class AddGrade extends AppCompatActivity {
 
         if(c != null) {
             for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
-//                Teste = Teste + c.getString(iDiscName) + "\n";
                 disciplines.add(c.getString(iDiscName));
             }
 

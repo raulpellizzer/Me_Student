@@ -1,9 +1,11 @@
 package com.example.mestudent;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class DisciplinesInfo {
+public class DisciplinesInfo extends AppCompatActivity {
     private String discName;
     private String discTeacherName;
     private String discClassroom;
@@ -16,7 +18,7 @@ public class DisciplinesInfo {
         this.discDay = discDay;
     }
 
-    public static List<DisciplinesInfo> listar(){
+    public static List<DisciplinesInfo> listAll(){
         List<DisciplinesInfo> disciplines = new ArrayList<>();
         disciplines.add(new DisciplinesInfo("Nome1", "Nome1", "Nome1", "Nome1"));
         disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
