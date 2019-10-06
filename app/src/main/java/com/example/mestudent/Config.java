@@ -3,12 +3,10 @@ package com.example.mestudent;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class Config extends AppCompatActivity implements View.OnClickListener {
     private Button btnConfig;
@@ -23,12 +21,6 @@ public class Config extends AppCompatActivity implements View.OnClickListener {
         builder.setTitle("Me, Student");
         builder.setMessage("Configurações salvas com sucesso");
         alert = builder.create();
-
-        builder.setPositiveButton("Positivo", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface arg0, int arg1) {
-                Toast.makeText(Config.this, "positivo=" + arg1, Toast.LENGTH_SHORT).show();
-            }
-        });
 
         getWindow().setFlags(
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
