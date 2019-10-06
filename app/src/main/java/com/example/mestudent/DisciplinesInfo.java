@@ -22,6 +22,27 @@ public class DisciplinesInfo extends AppCompatActivity {
         List<DisciplinesInfo> disciplines = new ArrayList<>();
         disciplines.add(new DisciplinesInfo("Nome1", "Nome1", "Nome1", "Nome1"));
         disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
+        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
+        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
+        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
+        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
+        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
+        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
+        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
+        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
+        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
+        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
+        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
+        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
+        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
+        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
+        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
+        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
+        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
+        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
+        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
+        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
+        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
 
         return disciplines;
     }

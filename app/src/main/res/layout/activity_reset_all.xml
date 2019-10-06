@@ -22,14 +22,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="30sp"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:text="@string/resetSemester2">
     </TextView>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="100sp">
+        android:paddingTop="50sp">
     </TextView>
 
     <Button
@@ -40,5 +40,35 @@
         android:text="@string/resetSemester"
         android:textStyle="bold">
     </Button>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="20sp">
+    </TextView>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <RadioButton
+            android:id="@+id/radYes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radYes">
+
+        </RadioButton>
+
+        <RadioButton
+            android:id="@+id/radNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radNo">
+
+        </RadioButton>
+
+    </RadioGroup>
 
 </LinearLayout>

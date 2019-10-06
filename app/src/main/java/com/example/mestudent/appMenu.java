@@ -16,6 +16,7 @@ public class appMenu extends AppCompatActivity implements View.OnClickListener{
     private Button btnRmvDisc;
     private Button btnEditDisc;
     private Button btnResetSemester;
+    private Button btnConfig;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class appMenu extends AppCompatActivity implements View.OnClickListener{
         btnRmvDisc = findViewById(R.id.btnRemoveDisc);
         btnEditDisc = findViewById(R.id.btnEditDisc);
         btnResetSemester = findViewById(R.id.btnReset);
+        btnConfig = findViewById(R.id.btnConfig);
 
         btnNewDisc.setOnClickListener(this);
         btnAbout.setOnClickListener(this);
@@ -43,6 +45,7 @@ public class appMenu extends AppCompatActivity implements View.OnClickListener{
         btnRmvDisc.setOnClickListener(this);
         btnEditDisc.setOnClickListener(this);
         btnResetSemester.setOnClickListener(this);
+        btnConfig.setOnClickListener(this);
     }
 
     @Override
@@ -103,6 +106,14 @@ public class appMenu extends AppCompatActivity implements View.OnClickListener{
                         ResetAll.class
                 );
                 startActivity(itReset);
+                break;
+
+            case R.id.btnConfig:
+                Intent itConfig = new Intent(
+                        getApplicationContext(),
+                        Config.class
+                );
+                startActivity(itConfig);
                 break;
 
             default:

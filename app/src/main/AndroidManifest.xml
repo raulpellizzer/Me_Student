@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ResetAll"></activity>
+        <activity android:name=".Config"></activity>
+        <activity android:name=".ResetAll" />
         <activity android:name=".EditDiscipline" />
         <activity android:name=".RemoveDiscipline" />
         <activity android:name=".ViewDisciplines" />
