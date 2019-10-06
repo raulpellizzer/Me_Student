@@ -33,10 +33,19 @@
     </TextView>
 
     <Spinner
-        android:id="@+id/edtDiscSpiner"
+        android:id="@+id/edtDiscSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center">
     </Spinner>
+
+    <Button
+        android:id="@+id/btnContinueEdtDisc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="200sp"
+        android:text="@string/continueAddGrade">
+    </Button>
 
 </LinearLayout>
