@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class appMenu extends AppCompatActivity implements View.OnClickListener{
     private Button btnNewDisc;
@@ -17,6 +18,8 @@ public class appMenu extends AppCompatActivity implements View.OnClickListener{
     private Button btnEditDisc;
     private Button btnResetSemester;
     private Button btnConfig;
+    private String username;
+    private TextView txtViewUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,7 @@ public class appMenu extends AppCompatActivity implements View.OnClickListener{
         btnEditDisc = findViewById(R.id.btnEditDisc);
         btnResetSemester = findViewById(R.id.btnReset);
         btnConfig = findViewById(R.id.btnConfig);
+        txtViewUser = findViewById(R.id.txtViewUser);
 
         btnNewDisc.setOnClickListener(this);
         btnAbout.setOnClickListener(this);
@@ -46,6 +50,13 @@ public class appMenu extends AppCompatActivity implements View.OnClickListener{
         btnEditDisc.setOnClickListener(this);
         btnResetSemester.setOnClickListener(this);
         btnConfig.setOnClickListener(this);
+
+        Intent it = getIntent();
+
+        if(it != null){
+            username = it.getStringExtra("user");
+            txtViewUser.setText(username);
+        }
     }
 
     @Override

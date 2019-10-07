@@ -63,6 +63,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             getApplicationContext(),
                             appMenu.class
                     );
+
+                    it.putExtra("user", edtUserName.getText().toString());
+
                     startActivity(it);
                     break;
                 } else {
