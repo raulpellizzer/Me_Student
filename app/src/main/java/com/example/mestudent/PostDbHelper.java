@@ -154,4 +154,34 @@ public class PostDbHelper extends SQLiteOpenHelper {
         }
     }
 
+    public boolean resetSemester() {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        boolean result;
+
+        try{
+            DB.execSQL(SQL_DELETE_DISCIPLINES);
+            result = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = false;
+            return result;
+        }
+        return result;
+    }
+
+    public boolean createDisciplinesTable() {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        boolean result;
+
+        try{
+            DB.execSQL(SQL_CREATE_DISCIPLINE);
+            result = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = false;
+            return result;
+        }
+        return result;
+    }
+
 }

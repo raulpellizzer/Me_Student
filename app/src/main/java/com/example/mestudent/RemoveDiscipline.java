@@ -38,9 +38,9 @@ public class RemoveDiscipline extends AppCompatActivity {
         removeDiscSpinner = findViewById(R.id.rmvDiscSpiner);
 
         c = DB.readDisciplineData();
-        iDiscName = c.getColumnIndex(DISCIPLINE_COLUMN_NAME);
 
         if(c != null) {
+            iDiscName = c.getColumnIndex(DISCIPLINE_COLUMN_NAME);
             for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
                 disciplines.add(c.getString(iDiscName));
             }
@@ -51,7 +51,7 @@ public class RemoveDiscipline extends AppCompatActivity {
 
         } else {
             Context context = getApplicationContext();
-            CharSequence text = "Error. Please, try again.";
+            CharSequence text = "Error. Please, try again. Check if you have disciplines assigned to you.";
             int duration = Toast.LENGTH_LONG;
 
             Toast toast = Toast.makeText(context, text, duration);

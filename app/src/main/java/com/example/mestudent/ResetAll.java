@@ -12,11 +12,15 @@ import android.widget.Toast;
 public class ResetAll extends AppCompatActivity implements View.OnClickListener {
     private RadioButton radioNo, radioYes;
     private Button btnResetAll;
+    PostDbHelper DB;
+    boolean resultReset, resultCreate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_all);
+
+        DB = new PostDbHelper(this);
 
         radioNo = findViewById(R.id.radNo);
         radioYes = findViewById(R.id.radYes);
@@ -30,14 +34,19 @@ public class ResetAll extends AppCompatActivity implements View.OnClickListener 
     @Override
     public void onClick(View view) {
 
-        if(view.getId() == R.id.btnResetSemester) {
+        if(view.getId() == R.id.btnResetSemester && radioYes.isChecked()) {
 
-            Context context = getApplicationContext();
-            CharSequence text = "Teste";
-            int duration = Toast.LENGTH_LONG;
+            resultReset = DB.resetSemester();
+            resultCreate = DB.createDisciplinesTable();
 
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
+            if(resultReset = true && resultCreate == true) {
+                Context context = getApplicationContext();
+                CharSequence text = "Your semester has been reseted.";
+                int duration = Toast.LENGTH_LONG;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            }
         }
     }
 }
