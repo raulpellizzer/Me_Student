@@ -18,7 +18,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="40sp"
+        android:textSize="35sp"
         android:textStyle="bold"
         android:layout_gravity="center"
         android:text="@string/app_name">
@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
-        android:paddingTop="10sp">
+        android:paddingTop="30sp">
     </TextView>
 
     <CheckBox
@@ -45,16 +45,15 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20sp"
         android:paddingTop="15sp"
-        android:text="Switch background color   ">
+        android:text="Switch theme   ">
     </Switch>
 
     <Button
         android:id="@+id/btnSaveConfig"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="200sp"
-        android:text="@string/saveNewDisc">
-    </Button>
+        android:text="@string/saveNewDisc"></Button>
 
 </LinearLayout>

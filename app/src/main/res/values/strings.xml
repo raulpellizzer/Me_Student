@@ -32,5 +32,6 @@
     <string name="ckbNot">Allow Notifications</string>
     <string name="continueAddGrade">Continue</string>
     <string name="username">User:</string>
+    <string name="signUpNewUser">New User</string>
 
 </resources>

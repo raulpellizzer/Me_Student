@@ -11,8 +11,25 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingTop="10sp"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:text="@string/signUpNewUser">
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="15sp">
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:paddingLeft="10sp"
         android:text="@string/signUpLogin"/>
 
 
@@ -27,6 +44,7 @@
         android:textSize="30sp"
         android:textStyle="bold"
         android:paddingTop="70sp"
+        android:paddingLeft="10sp"
         android:text="@string/signUpPassword"/>
 
     <EditText
@@ -41,6 +59,7 @@
         android:textSize="30sp"
         android:textStyle="bold"
         android:paddingTop="70sp"
+        android:paddingLeft="10sp"
         android:text="@string/confirmPassword"/>
 
     <EditText
@@ -48,6 +67,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:password="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="15sp">
+    </TextView>
 
     <Button
         android:id="@+id/btnSignUp"
