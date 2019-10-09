@@ -29,36 +29,40 @@ public class AddGrade extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_grade);
 
-        DB = new PostDbHelper(this);
-        List<String> disciplines = new ArrayList<>();
+        try {
+            DB = new PostDbHelper(this);
+            List<String> disciplines = new ArrayList<>();
 
-        getWindow().setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
-        );
-        getSupportActionBar().hide();
+            getWindow().setFlags(
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN
+            );
+            getSupportActionBar().hide();
 
-        addGradeSpinner = findViewById(R.id.addGradeSpiner);
+            addGradeSpinner = findViewById(R.id.addGradeSpiner);
 
-        c = DB.readDisciplineData();
+            c = DB.readDisciplineData();
 
-        if(c != null) {
-            iDiscName = c.getColumnIndex(DISCIPLINE_COLUMN_NAME);
-            for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
-                disciplines.add(c.getString(iDiscName));
+            if (c != null) {
+                iDiscName = c.getColumnIndex(DISCIPLINE_COLUMN_NAME);
+                for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+                    disciplines.add(c.getString(iDiscName));
+                }
+
+                ArrayAdapter<String> adapterSpinner = new ArrayAdapter<String>(AddGrade.this, android.R.layout.simple_list_item_1, disciplines);
+
+                addGradeSpinner.setAdapter(adapterSpinner);
+
+            } else {
+                Context context = getApplicationContext();
+                CharSequence text = "Error. Please, try again. Check if you have disciplines assigned to you.";
+                int duration = Toast.LENGTH_LONG;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
             }
-
-            ArrayAdapter<String> adapterSpinner = new ArrayAdapter<String>(AddGrade.this, android.R.layout.simple_list_item_1, disciplines);
-
-            addGradeSpinner.setAdapter(adapterSpinner);
-
-        } else {
-            Context context = getApplicationContext();
-            CharSequence text = "Error. Please, try again. Check if you have disciplines assigned to you.";
-            int duration = Toast.LENGTH_LONG;
-
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
+        } finally {
+            return;
         }
     }
 }

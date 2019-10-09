@@ -33,39 +33,44 @@ public class signUp extends AppCompatActivity implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.btnSignUp){
-            boolean result;
-            EditText login, password, confPassword;
 
-            login = findViewById(R.id.edtTextSignUpLogin);
-            password = findViewById(R.id.edtTextSignUpPassword);
-            confPassword = findViewById(R.id.edtTextConfPass);
+        try {
+            if (view.getId() == R.id.btnSignUp) {
+                boolean result;
+                EditText login, password, confPassword;
 
-            if ( (login.getText().toString().length() == 0) || (password.getText().toString().length() == 0) || (confPassword.getText().toString().length() == 0) || (!password.getText().toString().equals(confPassword.getText().toString())) ) {
-                Toast.makeText(getApplicationContext(), "Type a valid login/password name.", Toast.LENGTH_LONG).show();
-                login.setText("");
-                password.setText("");
-                confPassword.setText("");
-                return;
-            } else {
-                result = DB.insertUser(login.getText().toString(), password.getText().toString());
+                login = findViewById(R.id.edtTextSignUpLogin);
+                password = findViewById(R.id.edtTextSignUpPassword);
+                confPassword = findViewById(R.id.edtTextConfPass);
 
-                if(result) {
-                    Context context = getApplicationContext();
-                    CharSequence text = "Welcome, " + login.getText().toString() + " !";
-                    int duration = Toast.LENGTH_LONG;
+                if ((login.getText().toString().length() == 0) || (password.getText().toString().length() == 0) || (confPassword.getText().toString().length() == 0) || (!password.getText().toString().equals(confPassword.getText().toString()))) {
+                    Toast.makeText(getApplicationContext(), "Type a valid login/password name.", Toast.LENGTH_LONG).show();
+                    login.setText("");
+                    password.setText("");
+                    confPassword.setText("");
+                    return;
+                } else {
+                    result = DB.insertUser(login.getText().toString(), password.getText().toString());
 
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
-                } else{
-                    Context context = getApplicationContext();
-                    CharSequence text = "Error. Please, try again.";
-                    int duration = Toast.LENGTH_LONG;
+                    if (result) {
+                        Context context = getApplicationContext();
+                        CharSequence text = "Welcome, " + login.getText().toString() + " !";
+                        int duration = Toast.LENGTH_LONG;
 
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    } else {
+                        Context context = getApplicationContext();
+                        CharSequence text = "Error. Please, try again.";
+                        int duration = Toast.LENGTH_LONG;
+
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    }
                 }
             }
+        } finally {
+            return;
         }
     }
 }

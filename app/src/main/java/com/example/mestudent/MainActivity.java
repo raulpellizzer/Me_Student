@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         DB = new PostDbHelper(this);
 
+
         getWindow().setFlags(
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
@@ -45,45 +46,47 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         edtUserName = findViewById(R.id.edtLogin);
         edtPassword = findViewById(R.id.edtPassword);
-
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btnLogin:
+        try {
+            switch (v.getId()) {
+                case R.id.btnLogin:
+                    userName = edtUserName.getText().toString();
+                    password = edtPassword.getText().toString();
 
-                userName = edtUserName.getText().toString();
-                password = edtPassword.getText().toString();
+                    result = DB.readUserData(LOGIN_TABLE_NAME, userName, password);
 
-                result = DB.readUserData(LOGIN_TABLE_NAME, userName, password);
+                    if (result) {
+                        Intent it = new Intent(
+                                getApplicationContext(),
+                                appMenu.class
+                        );
 
-                if(result) {
-                    Intent it = new Intent(
+                        it.putExtra("user", edtUserName.getText().toString());
+
+                        startActivity(it);
+                        break;
+                    } else {
+                        Toast.makeText(getApplicationContext(), "User not authenticated. Try again.", Toast.LENGTH_LONG).show();
+                        break;
+                    }
+
+                case R.id.btnSignUp:
+                    Intent itSignUp = new Intent(
                             getApplicationContext(),
-                            appMenu.class
+                            signUp.class
                     );
-
-                    it.putExtra("user", edtUserName.getText().toString());
-
-                    startActivity(it);
+                    startActivity(itSignUp);
                     break;
-                } else {
-                    Toast.makeText(getApplicationContext(), "User not authenticated. Try again.", Toast.LENGTH_LONG).show();
+
+                default:
                     break;
-                }
 
-            case R.id.btnSignUp:
-                Intent itSignUp = new Intent(
-                        getApplicationContext(),
-                        signUp.class
-                );
-                startActivity(itSignUp);
-                break;
-
-            default:
-                break;
-
+            }
+        } finally {
+            return;
         }
     }
 }

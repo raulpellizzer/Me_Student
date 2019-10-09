@@ -26,36 +26,40 @@ public class RemoveDiscipline extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_remove_discipline);
 
-        DB = new PostDbHelper(this);
-        List<String> disciplines = new ArrayList<>();
+        try {
+            DB = new PostDbHelper(this);
+            List<String> disciplines = new ArrayList<>();
 
-        getWindow().setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
-        );
-        getSupportActionBar().hide();
+            getWindow().setFlags(
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN
+            );
+            getSupportActionBar().hide();
 
-        removeDiscSpinner = findViewById(R.id.rmvDiscSpiner);
+            removeDiscSpinner = findViewById(R.id.rmvDiscSpiner);
 
-        c = DB.readDisciplineData();
+            c = DB.readDisciplineData();
 
-        if(c != null) {
-            iDiscName = c.getColumnIndex(DISCIPLINE_COLUMN_NAME);
-            for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
-                disciplines.add(c.getString(iDiscName));
+            if (c != null) {
+                iDiscName = c.getColumnIndex(DISCIPLINE_COLUMN_NAME);
+                for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+                    disciplines.add(c.getString(iDiscName));
+                }
+
+                ArrayAdapter<String> adapterSpinner = new ArrayAdapter<String>(RemoveDiscipline.this, android.R.layout.simple_list_item_1, disciplines);
+
+                removeDiscSpinner.setAdapter(adapterSpinner);
+
+            } else {
+                Context context = getApplicationContext();
+                CharSequence text = "Error. Please, try again. Check if you have disciplines assigned to you.";
+                int duration = Toast.LENGTH_LONG;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
             }
-
-            ArrayAdapter<String> adapterSpinner = new ArrayAdapter<String>(RemoveDiscipline.this, android.R.layout.simple_list_item_1, disciplines);
-
-            removeDiscSpinner.setAdapter(adapterSpinner);
-
-        } else {
-            Context context = getApplicationContext();
-            CharSequence text = "Error. Please, try again. Check if you have disciplines assigned to you.";
-            int duration = Toast.LENGTH_LONG;
-
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
+        } finally {
+            return;
         }
     }
 }

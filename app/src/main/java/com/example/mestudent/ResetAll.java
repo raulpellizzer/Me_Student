@@ -34,19 +34,23 @@ public class ResetAll extends AppCompatActivity implements View.OnClickListener 
     @Override
     public void onClick(View view) {
 
-        if(view.getId() == R.id.btnResetSemester && radioYes.isChecked()) {
+        try {
+            if (view.getId() == R.id.btnResetSemester && radioYes.isChecked()) {
 
-            resultReset = DB.resetSemester();
-            resultCreate = DB.createDisciplinesTable();
+                resultReset = DB.resetSemester();
+                resultCreate = DB.createDisciplinesTable();
 
-            if(resultReset = true && resultCreate == true) {
-                Context context = getApplicationContext();
-                CharSequence text = "Your semester has been reseted.";
-                int duration = Toast.LENGTH_LONG;
+                if (resultReset = true && resultCreate == true) {
+                    Context context = getApplicationContext();
+                    CharSequence text = "Your semester has been reseted.";
+                    int duration = Toast.LENGTH_LONG;
 
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                }
             }
+        } finally {
+            return;
         }
     }
 }

@@ -33,41 +33,46 @@ public class newDiscipline extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
-        if(view.getId() == R.id.btnRegisterNewDisc) {
-            boolean result;
-            EditText discName, teacherName, classroom, date;
 
-            discName = findViewById(R.id.edtNewDiscName);
-            teacherName = findViewById(R.id.edtNewDiscTeacherName);
-            classroom = findViewById(R.id.edtClassroom);
-            date = findViewById(R.id.edtClassDay);
+        try {
+            if (view.getId() == R.id.btnRegisterNewDisc) {
+                boolean result;
+                EditText discName, teacherName, classroom, date;
 
-            if ( (discName.getText().toString().length() > 4) && (teacherName.getText().toString().length() > 4) && (classroom.getText().toString().length() > 0) && (date.getText().toString().length() > 0) ) {
-                result = DB.insertNewDiscipline(discName.getText().toString(), teacherName.getText().toString(), classroom.getText().toString(), date.getText().toString());
+                discName = findViewById(R.id.edtNewDiscName);
+                teacherName = findViewById(R.id.edtNewDiscTeacherName);
+                classroom = findViewById(R.id.edtClassroom);
+                date = findViewById(R.id.edtClassDay);
 
-                if (result) {
-                    Context context = getApplicationContext();
-                    CharSequence text = "Successfully registered course!";
-                    int duration = Toast.LENGTH_LONG;
+                if ((discName.getText().toString().length() > 4) && (teacherName.getText().toString().length() > 4) && (classroom.getText().toString().length() > 0) && (date.getText().toString().length() > 0)) {
+                    result = DB.insertNewDiscipline(discName.getText().toString(), teacherName.getText().toString(), classroom.getText().toString(), date.getText().toString());
 
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
+                    if (result) {
+                        Context context = getApplicationContext();
+                        CharSequence text = "Successfully registered course!";
+                        int duration = Toast.LENGTH_LONG;
+
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    } else {
+                        Context context = getApplicationContext();
+                        CharSequence text = "Error. Please, try again.";
+                        int duration = Toast.LENGTH_LONG;
+
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    }
                 } else {
-                    Context context = getApplicationContext();
-                    CharSequence text = "Error. Please, try again.";
-                    int duration = Toast.LENGTH_LONG;
-
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
+                    Toast.makeText(getApplicationContext(), "Error. Please, type again.", Toast.LENGTH_LONG).show();
+                    discName.setText("");
+                    teacherName.setText("");
+                    classroom.setText("");
+                    date.setText("");
+                    return;
                 }
-            } else {
-                Toast.makeText(getApplicationContext(), "Error. Please, type again.", Toast.LENGTH_LONG).show();
-                discName.setText("");
-                teacherName.setText("");
-                classroom.setText("");
-                date.setText("");
-                return;
             }
+        } finally {
+            return;
         }
     }
 }
