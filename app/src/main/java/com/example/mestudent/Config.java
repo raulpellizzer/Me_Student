@@ -80,8 +80,8 @@ public class Config extends AppCompatActivity implements View.OnClickListener {
                 .setContentText(texto);
 
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-        stackBuilder.addParentStack(About.class);
-        stackBuilder.addNextIntent(new Intent(this, About.class));
+        stackBuilder.addParentStack(Config.class);
+        stackBuilder.addNextIntent(new Intent(this, Config.class));
         PendingIntent it = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setContentIntent(it);
 
