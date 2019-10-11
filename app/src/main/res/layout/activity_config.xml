@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20sp"
         android:paddingTop="15sp"
-        android:text="Switch theme   ">
+        android:text="Switch Theme   ">
     </Switch>
 
     <Button

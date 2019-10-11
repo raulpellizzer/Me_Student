@@ -33,7 +33,6 @@ public class ViewDisciplines extends AppCompatActivity {
         viewDisciplines = findViewById(R.id.recViewAllDisc);
 
         viewDisciplines.setAdapter(new DisciplineAdapterRecycler(DisciplinesInfo.listAll(), this));
-        //RecyclerView.LayoutManager layout = new GridLayoutManager(ViewDisciplines.this, 2);
         RecyclerView.LayoutManager layout = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
 
         viewDisciplines.setLayoutManager(layout);
