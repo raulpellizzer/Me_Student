@@ -68,14 +68,31 @@ public class PostDbHelper extends SQLiteOpenHelper {
 
     public boolean insertUser(String login, String password) {
         long result;
+        Cursor c = null;
+        int iLogin;
+        boolean userExists = false;
 
         try {
             SQLiteDatabase DB = this.getWritableDatabase();
 
-            ContentValues contentValues = new ContentValues();
-            contentValues.put(LOGIN_COLUMN_NAME, login);
-            contentValues.put(PASSWORD_COLUMN_NAME, password);
-            result = DB.insert(LOGIN_TABLE_NAME, null, contentValues);
+            String[] columns = new String[]{LOGIN_COLUMN_NAME};
+            c = DB.query(LOGIN_TABLE_NAME, columns, null, null, null, null, null);
+            iLogin = c.getColumnIndex(LOGIN_COLUMN_NAME);
+
+            for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+                if ((c.getString(iLogin).equals(login))) {
+                    userExists = true;
+                }
+            }
+
+            if(!userExists) {
+                ContentValues contentValues = new ContentValues();
+                contentValues.put(LOGIN_COLUMN_NAME, login);
+                contentValues.put(PASSWORD_COLUMN_NAME, password);
+                result = DB.insert(LOGIN_TABLE_NAME, null, contentValues);
+            } else {
+                result = -1;
+            }
 
             if(result == -1)
                 return false;
