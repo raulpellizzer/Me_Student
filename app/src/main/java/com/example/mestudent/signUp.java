@@ -33,11 +33,12 @@ public class signUp extends AppCompatActivity implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
+        int duration;
+        boolean result;
+        EditText login, password, confPassword;
 
         try {
             if (view.getId() == R.id.btnSignUp) {
-                boolean result;
-                EditText login, password, confPassword;
 
                 login = findViewById(R.id.edtTextSignUpLogin);
                 password = findViewById(R.id.edtTextSignUpPassword);
@@ -55,14 +56,14 @@ public class signUp extends AppCompatActivity implements View.OnClickListener{
                     if (result) {
                         Context context = getApplicationContext();
                         CharSequence text = "Welcome, " + login.getText().toString() + " !";
-                        int duration = Toast.LENGTH_LONG;
+                        duration = Toast.LENGTH_LONG;
 
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();
                     } else {
                         Context context = getApplicationContext();
                         CharSequence text = "Error. Please, try again.";
-                        int duration = Toast.LENGTH_LONG;
+                        duration = Toast.LENGTH_LONG;
 
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();

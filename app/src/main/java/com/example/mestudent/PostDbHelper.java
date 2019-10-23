@@ -67,14 +67,15 @@ public class PostDbHelper extends SQLiteOpenHelper {
     }
 
     public boolean insertUser(String login, String password) {
+        long result;
+
         try {
             SQLiteDatabase DB = this.getWritableDatabase();
 
             ContentValues contentValues = new ContentValues();
             contentValues.put(LOGIN_COLUMN_NAME, login);
             contentValues.put(PASSWORD_COLUMN_NAME, password);
-
-            long result = DB.insert(LOGIN_TABLE_NAME, null, contentValues);
+            result = DB.insert(LOGIN_TABLE_NAME, null, contentValues);
 
             if(result == -1)
                 return false;
