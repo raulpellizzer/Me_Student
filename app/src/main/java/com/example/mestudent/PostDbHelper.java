@@ -134,16 +134,34 @@ public class PostDbHelper extends SQLiteOpenHelper {
     }
 
     public boolean insertNewDiscipline(String discName, String teacherName, String classroom, String date) {
+        long result;
+        Cursor c = null;
+        int idiscName;
+        boolean discExists = false;
+
         try{
             SQLiteDatabase DB = this.getWritableDatabase();
 
-            ContentValues contentValues = new ContentValues();
-            contentValues.put(DISCIPLINE_COLUMN_NAME, discName);
-            contentValues.put(TEACHER_COLUMN_NAME, teacherName);
-            contentValues.put(CLASSROOM_COLUMN_NAME, classroom);
-            contentValues.put(DATE_COLUMN_NAME, date);
+            String[] columns = new String[]{DISCIPLINE_COLUMN_NAME};
+            c = DB.query(DISCIPLINE_TABLE_NAME, columns, null, null, null, null, null);
+            idiscName = c.getColumnIndex(DISCIPLINE_COLUMN_NAME);
 
-            long result = DB.insert(DISCIPLINE_TABLE_NAME, null, contentValues);
+            for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+                if ((c.getString(idiscName).equals(discName))) {
+                    discExists = true;
+                }
+            }
+
+            if(!discExists) {
+                ContentValues contentValues = new ContentValues();
+                contentValues.put(DISCIPLINE_COLUMN_NAME, discName);
+                contentValues.put(TEACHER_COLUMN_NAME, teacherName);
+                contentValues.put(CLASSROOM_COLUMN_NAME, classroom);
+                contentValues.put(DATE_COLUMN_NAME, date);
+                result = DB.insert(DISCIPLINE_TABLE_NAME, null, contentValues);
+            } else {
+                result = -1;
+            }
 
             if(result == -1)
                 return false;
