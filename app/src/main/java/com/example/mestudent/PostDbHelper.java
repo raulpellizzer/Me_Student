@@ -88,16 +88,18 @@ public class PostDbHelper extends SQLiteOpenHelper {
     }
 
     public boolean readUserData(String tableName, String userName, String password) {
+        int iUser;
+        int iPassword;
         boolean findUser;
+
         try {
             SQLiteDatabase DB = this.getReadableDatabase();
             String[] columns = new String[]{LOGIN_COLUMN_NAME, PASSWORD_COLUMN_NAME};
             Cursor c = DB.query(tableName, columns, null, null, null, null, null);
 
             findUser = false;
-
-            int iUser = c.getColumnIndex(LOGIN_COLUMN_NAME);
-            int iPassword = c.getColumnIndex(PASSWORD_COLUMN_NAME);
+            iUser = c.getColumnIndex(LOGIN_COLUMN_NAME);
+            iPassword = c.getColumnIndex(PASSWORD_COLUMN_NAME);
 
             for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
                 if ((c.getString(iUser).equals(userName)) && (c.getString(iPassword).equals(password))) {
@@ -183,5 +185,35 @@ public class PostDbHelper extends SQLiteOpenHelper {
         }
         return result;
     }
+
+    public Boolean deleteDiscipline(String discName){
+        Cursor c = null;
+        SQLiteDatabase DB = this.getWritableDatabase();
+        String sqliteQuery;
+        int iDisc;
+
+        sqliteQuery = "DELETE FROM " + DISCIPLINE_TABLE_NAME + " WHERE discipline = '" + discName + "';";
+
+        try {
+            String[] columns = new String[]{DISCIPLINE_COLUMN_NAME};
+            c = DB.query(DISCIPLINE_TABLE_NAME, columns, null, null, null, null, null);
+
+            iDisc = c.getColumnIndex(DISCIPLINE_COLUMN_NAME);
+
+            for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+                if ((c.getString(iDisc).equals(discName))) {
+                    DB.execSQL(sqliteQuery);
+                }
+            }
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
+
 
 }
