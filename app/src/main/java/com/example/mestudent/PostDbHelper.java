@@ -251,6 +251,49 @@ public class PostDbHelper extends SQLiteOpenHelper {
         }
     }
 
+    public Boolean updateRegister(String currentDiscName, String discName, String teacherName, String classroom, String date) {
+        int iDiscName, iTeacherName, iClassroom, iDate;
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor c = null;
+        String discTableName;
+        String sqliteQuery;
+        boolean queryExecuted = false;
+
+        discTableName = DISCIPLINE_TABLE_NAME;
+
+        try {
+            String[] columns = new String[]{DISCIPLINE_COLUMN_NAME, TEACHER_COLUMN_NAME, CLASSROOM_COLUMN_NAME, DATE_COLUMN_NAME};
+            c = DB.query(discTableName, columns, null, null, null, null, null);
+
+            iDiscName = c.getColumnIndex(DISCIPLINE_COLUMN_NAME);
+            iTeacherName = c.getColumnIndex(TEACHER_COLUMN_NAME);
+            iClassroom = c.getColumnIndex(CLASSROOM_COLUMN_NAME);
+            iDate = c.getColumnIndex(DATE_COLUMN_NAME);
+
+            for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+                if ((c.getString(iDiscName).equals(currentDiscName))) {
+                    sqliteQuery = "UPDATE " + DISCIPLINE_TABLE_NAME +
+                                  " SET " + DISCIPLINE_COLUMN_NAME + " = '" + discName + "'," +
+                                            TEACHER_COLUMN_NAME + " = '" + teacherName + "'," +
+                                            CLASSROOM_COLUMN_NAME + " = '" + classroom + "'," +
+                                            DATE_COLUMN_NAME + " = '" + date + "'" +
+                                  " WHERE " + DISCIPLINE_COLUMN_NAME + " = '" + currentDiscName + "';";
+                    DB.execSQL(sqliteQuery);
+                    queryExecuted = true;
+                }
+            }
+
+            if(queryExecuted)
+                return true;
+            else
+                return false;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 
 
 
