@@ -33,5 +33,6 @@
     <string name="continueAddGrade">Continue</string>
     <string name="username">User:</string>
     <string name="signUpNewUser">New User</string>
+    <string name="saveDiscChanges">Save Changes</string>
 
 </resources>

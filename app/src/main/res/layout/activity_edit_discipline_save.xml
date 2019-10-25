@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBackground"
+    tools:context=".EditDisciplineSave">
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:textStyle="bold"
+    android:paddingTop="10sp"
+    android:textSize="30sp"
+    android:text="@string/editDisc">
+</TextView>
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingTop="15sp">
+</TextView>
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="20sp"
+    android:textStyle="bold"
+    android:paddingTop="15sp"
+    android:paddingLeft="10sp"
+    android:text="@string/nameNewDisc">
+</TextView>
+
+<EditText
+    android:id="@+id/edtEditDiscName"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+</EditText>
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="20sp"
+    android:textStyle="bold"
+    android:paddingTop="15sp"
+    android:paddingLeft="10sp"
+    android:text="@string/nameNewDiscTeacher">
+</TextView>
+
+<EditText
+    android:id="@+id/edtEditDiscTeacherName"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+</EditText>
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="20sp"
+    android:textStyle="bold"
+    android:paddingTop="15sp"
+    android:paddingLeft="10sp"
+    android:text="@string/classsroom">
+</TextView>
+
+<EditText
+    android:id="@+id/edtEditClassroom"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+</EditText>
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="20sp"
+    android:textStyle="bold"
+    android:paddingTop="15sp"
+    android:paddingLeft="10sp"
+    android:text="@string/dayOfClass">
+</TextView>
+
+<EditText
+    android:id="@+id/edtEditClassDay"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+</EditText>
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingTop="20sp">
+</TextView>
+
+<Button
+    android:id="@+id/btnSaveChanges"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:text="@string/saveDiscChanges">
+</Button>
+
+</LinearLayout>

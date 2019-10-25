@@ -82,6 +82,7 @@ public class PostDbHelper extends SQLiteOpenHelper {
             for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
                 if ((c.getString(iLogin).equals(login))) {
                     userExists = true;
+                    break;
                 }
             }
 
@@ -149,6 +150,7 @@ public class PostDbHelper extends SQLiteOpenHelper {
             for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
                 if ((c.getString(idiscName).equals(discName))) {
                     discExists = true;
+                    break;
                 }
             }
 
