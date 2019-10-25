@@ -23,6 +23,8 @@ public class EditDisciplineSave extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_discipline_save);
 
+        DB = new PostDbHelper(this);
+
         getWindow().setFlags(
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
@@ -55,29 +57,33 @@ public class EditDisciplineSave extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View view) {
         boolean result = false;
-        newDiscName = edtEditDiscName.getText().toString();
-        newTeacherName = edtEditTeacherName.getText().toString();
-        newClassroom = edtEditClassroom.getText().toString();
-        newDate = edtEditDate.getText().toString();
 
-        //  CORRIGIR ERRO - APP CRASHA
-//        result = DB.updateRegister(discName, newDiscName, newTeacherName, newClassroom, newDate);
+        try {
+            newDiscName = edtEditDiscName.getText().toString();
+            newTeacherName = edtEditTeacherName.getText().toString();
+            newClassroom = edtEditClassroom.getText().toString();
+            newDate = edtEditDate.getText().toString();
 
-        if(result){
-            Context context = getApplicationContext();
-            CharSequence text = "Changes saved succesfully.";
-            int duration = Toast.LENGTH_LONG;
+//            CORRIGIR ERRO - APP CRASHA
+            result = DB.updateRegister(discName, newDiscName, newTeacherName, newClassroom, newDate);
 
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-        } else {
-            Context context = getApplicationContext();
-            CharSequence text = "Error. Please, try again.";
-            int duration = Toast.LENGTH_LONG;
+            if (result) {
+                Context context = getApplicationContext();
+                CharSequence text = "Changes saved succesfully.";
+                int duration = Toast.LENGTH_LONG;
 
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            } else {
+                Context context = getApplicationContext();
+                CharSequence text = "Error. Please, try again.";
+                int duration = Toast.LENGTH_LONG;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            }
+        }finally {
+            return;
         }
-
     }
 }
