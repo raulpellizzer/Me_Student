@@ -328,7 +328,7 @@ public class PostDbHelper extends SQLiteOpenHelper {
             if (!discExists) {
                 ContentValues contentValues = new ContentValues();
                 contentValues.put(GRADE_DISCIPLINE_COLUMN_NAME, discName);
-                contentValues.put(GRADE_COLUMN_NAME, "");
+                contentValues.put(GRADE_COLUMN_NAME, ""); // CREATE AN EMPTY JSON
                 result = DB.insert(GRADE_TABLE_NAME, null, contentValues);
             } else {
                 result = -1;
