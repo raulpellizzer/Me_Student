@@ -73,16 +73,17 @@ public class RemoveDiscipline extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
         int itemPosition;
         String selectedItem;
-        boolean result;
+        boolean resultRmvDisc, resultRmvDiscGrades;
 
         try {
             if (view.getId() == R.id.btnContinueRmvDisc){
 
                 itemPosition = removeDiscSpinner.getSelectedItemPosition();
                 selectedItem = disciplines.get(itemPosition);
-                result = DB.deleteDiscipline(selectedItem);
+                resultRmvDisc = DB.deleteDiscipline(selectedItem);
+                resultRmvDiscGrades = DB.deleteDisciplineGrades(selectedItem);
 
-                if(result) {
+                if((resultRmvDisc == true) && (resultRmvDiscGrades == true)) {
                     Context context = getApplicationContext();
                     CharSequence text = "Succesfully removed.";
                     int duration = Toast.LENGTH_LONG;

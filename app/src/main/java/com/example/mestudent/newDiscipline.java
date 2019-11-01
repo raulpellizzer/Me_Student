@@ -14,6 +14,7 @@ public class newDiscipline extends AppCompatActivity implements View.OnClickList
     PostDbHelper DB;
     private Button btnNewDiscipline;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +37,7 @@ public class newDiscipline extends AppCompatActivity implements View.OnClickList
 
         try {
             if (view.getId() == R.id.btnRegisterNewDisc) {
-                boolean result;
+                boolean resultDic, resultGradeDisc;
                 EditText discName, teacherName, classroom, date;
 
                 discName = findViewById(R.id.edtNewDiscName);
@@ -45,9 +46,10 @@ public class newDiscipline extends AppCompatActivity implements View.OnClickList
                 date = findViewById(R.id.edtClassDay);
 
                 if ((discName.getText().toString().length() > 4) && (teacherName.getText().toString().length() > 4) && (classroom.getText().toString().length() > 0) && (date.getText().toString().length() > 0)) {
-                    result = DB.insertNewDiscipline(discName.getText().toString(), teacherName.getText().toString(), classroom.getText().toString(), date.getText().toString());
+                    resultDic = DB.insertNewDiscipline(discName.getText().toString(), teacherName.getText().toString(), classroom.getText().toString(), date.getText().toString());
+                    resultGradeDisc = DB.startDiscipline(discName.getText().toString());
 
-                    if (result) {
+                    if ((resultDic == true) && (resultGradeDisc == true)) {
                         Context context = getApplicationContext();
                         CharSequence text = "Successfully registered course!";
                         int duration = Toast.LENGTH_LONG;

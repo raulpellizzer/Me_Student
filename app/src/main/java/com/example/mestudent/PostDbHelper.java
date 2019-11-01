@@ -14,6 +14,9 @@ import static com.example.mestudent.schema.dtbaseCONSTS.DATABASE_VERSION;
 import static com.example.mestudent.schema.dtbaseCONSTS.DATE_COLUMN_NAME;
 import static com.example.mestudent.schema.dtbaseCONSTS.DISCIPLINE_COLUMN_NAME;
 import static com.example.mestudent.schema.dtbaseCONSTS.DISCIPLINE_TABLE_NAME;
+import static com.example.mestudent.schema.dtbaseCONSTS.GRADE_COLUMN_NAME;
+import static com.example.mestudent.schema.dtbaseCONSTS.GRADE_DISCIPLINE_COLUMN_NAME;
+import static com.example.mestudent.schema.dtbaseCONSTS.GRADE_TABLE_NAME;
 import static com.example.mestudent.schema.dtbaseCONSTS.LOGIN_TABLE_NAME;
 import static com.example.mestudent.schema.dtbaseCONSTS.LOGIN_COLUMN_NAME;
 import static com.example.mestudent.schema.dtbaseCONSTS.PASSWORD_COLUMN_NAME;
@@ -37,11 +40,20 @@ public class PostDbHelper extends SQLiteOpenHelper {
                     CLASSROOM_COLUMN_NAME + TEXT_TYPE + COMMA_SEP +
                     schema.dtbaseCONSTS.DATE_COLUMN_NAME + TEXT_TYPE + " )";
 
+    private static final String SQL_CREATE_GRADES =
+            "CREATE TABLE " + GRADE_TABLE_NAME + " (" +
+                    schema.dtbaseCONSTS._ID + " INTEGER PRIMARY KEY," +
+                    GRADE_DISCIPLINE_COLUMN_NAME + TEXT_TYPE + COMMA_SEP +
+                    GRADE_COLUMN_NAME + TEXT_TYPE + " )";
+
     private static final String SQL_DELETE_USER =
             "DROP TABLE IF EXISTS " + LOGIN_TABLE_NAME;
 
     private static final String SQL_DELETE_DISCIPLINES =
             "DROP TABLE IF EXISTS " + DISCIPLINE_TABLE_NAME;
+
+    private static final String SQL_DELETE_GRADES =
+            "DROP TABLE IF EXISTS " + GRADE_TABLE_NAME;
 
     public PostDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -54,11 +66,13 @@ public class PostDbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_USER);
         db.execSQL(SQL_CREATE_DISCIPLINE);
+        db.execSQL(SQL_CREATE_GRADES);
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(SQL_DELETE_USER);
         db.execSQL(SQL_DELETE_DISCIPLINES);
+        db.execSQL(SQL_DELETE_GRADES);
         onCreate(db);
     }
 
@@ -252,7 +266,7 @@ public class PostDbHelper extends SQLiteOpenHelper {
     }
 
     public Boolean updateRegister(String currentDiscName, String discName, String teacherName, String classroom, String date) {
-        int iDiscName, iTeacherName, iClassroom, iDate;
+        int iDiscName;
         SQLiteDatabase DB = this.getWritableDatabase();
         Cursor c = null;
         String discTableName;
@@ -266,9 +280,6 @@ public class PostDbHelper extends SQLiteOpenHelper {
             c = DB.query(discTableName, columns, null, null, null, null, null);
 
             iDiscName = c.getColumnIndex(DISCIPLINE_COLUMN_NAME);
-            iTeacherName = c.getColumnIndex(TEACHER_COLUMN_NAME);
-            iClassroom = c.getColumnIndex(CLASSROOM_COLUMN_NAME);
-            iDate = c.getColumnIndex(DATE_COLUMN_NAME);
 
             for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
                 if ((c.getString(iDiscName).equals(currentDiscName))) {
@@ -294,7 +305,76 @@ public class PostDbHelper extends SQLiteOpenHelper {
         }
     }
 
+    public boolean startDiscipline(String discName) {
+        long result;
+        Cursor c = null;
+        int idiscName;
+        boolean discExists = false;
+
+        try {
+            SQLiteDatabase DB = this.getWritableDatabase();
+
+            String[] columns = new String[]{GRADE_DISCIPLINE_COLUMN_NAME};
+            c = DB.query(GRADE_TABLE_NAME, columns, null, null, null, null, null);
+            idiscName = c.getColumnIndex(GRADE_DISCIPLINE_COLUMN_NAME);
+
+            for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+                if ((c.getString(idiscName).equals(discName))) {
+                    discExists = true;
+                    break;
+                }
+            }
+
+            if (!discExists) {
+                ContentValues contentValues = new ContentValues();
+                contentValues.put(GRADE_DISCIPLINE_COLUMN_NAME, discName);
+                contentValues.put(GRADE_COLUMN_NAME, "");
+                result = DB.insert(GRADE_TABLE_NAME, null, contentValues);
+            } else {
+                result = -1;
+            }
+
+            if (result == -1)
+                return false;
+            else
+                return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public Boolean deleteDisciplineGrades(String discName){
+        Cursor c = null;
+        SQLiteDatabase DB = this.getWritableDatabase();
+        String sqliteQuery;
+        int iDisc;
+
+        sqliteQuery = "DELETE FROM " + GRADE_TABLE_NAME + " WHERE discipline = '" + discName + "';";
+
+        try {
+            String[] columns = new String[]{GRADE_DISCIPLINE_COLUMN_NAME};
+            c = DB.query(GRADE_TABLE_NAME, columns, null, null, null, null, null);
+
+            iDisc = c.getColumnIndex(GRADE_DISCIPLINE_COLUMN_NAME);
+
+            for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+                if ((c.getString(iDisc).equals(discName))) {
+                    DB.execSQL(sqliteQuery);
+                }
+            }
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
 
 
 }
+
+
+
