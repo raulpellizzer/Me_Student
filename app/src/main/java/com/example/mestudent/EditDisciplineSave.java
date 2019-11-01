@@ -64,7 +64,6 @@ public class EditDisciplineSave extends AppCompatActivity implements View.OnClic
             newClassroom = edtEditClassroom.getText().toString();
             newDate = edtEditDate.getText().toString();
 
-//            CORRIGIR ERRO - APP CRASHA
             result = DB.updateRegister(discName, newDiscName, newTeacherName, newClassroom, newDate);
 
             if (result) {
