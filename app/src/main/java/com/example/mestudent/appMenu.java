@@ -53,7 +53,6 @@ public class appMenu extends AppCompatActivity implements View.OnClickListener{
             btnConfig.setOnClickListener(this);
 
             Intent it = getIntent();
-
             if (it != null) {
                 username = it.getStringExtra("user");
                 txtViewUser.setText(username);

@@ -214,6 +214,7 @@ public class PostDbHelper extends SQLiteOpenHelper {
 
         try{
             DB.execSQL(SQL_DELETE_DISCIPLINES);
+            DB.execSQL(SQL_DELETE_GRADES);
             result = true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -369,6 +370,24 @@ public class PostDbHelper extends SQLiteOpenHelper {
         } catch (Exception e) {
             e.printStackTrace();
             return false;
+        }
+    }
+
+    public Cursor readGradeData () {
+        Cursor c = null;
+        String gradeTableName;
+
+        gradeTableName = GRADE_TABLE_NAME;
+
+        try{
+            SQLiteDatabase DB = this.getReadableDatabase();
+            String[] columns = new String[]{GRADE_DISCIPLINE_COLUMN_NAME, GRADE_COLUMN_NAME};
+            c = DB.query(gradeTableName, columns, null, null, null, null, null);
+
+            return c;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return c;
         }
     }
 

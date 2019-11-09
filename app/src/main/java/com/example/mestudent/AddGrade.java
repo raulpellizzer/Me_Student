@@ -3,10 +3,13 @@ package com.example.mestudent;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -18,11 +21,14 @@ import static com.example.mestudent.schema.dtbaseCONSTS.DATE_COLUMN_NAME;
 import static com.example.mestudent.schema.dtbaseCONSTS.DISCIPLINE_COLUMN_NAME;
 import static com.example.mestudent.schema.dtbaseCONSTS.TEACHER_COLUMN_NAME;
 
-public class AddGrade extends AppCompatActivity {
+public class AddGrade extends AppCompatActivity implements View.OnClickListener {
     int iDiscName;
     PostDbHelper DB;
     private Spinner addGradeSpinner;
+    private Button btnAddGrade;
     Cursor c;
+
+    List<String> disciplines = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +37,6 @@ public class AddGrade extends AppCompatActivity {
 
         try {
             DB = new PostDbHelper(this);
-            List<String> disciplines = new ArrayList<>();
 
             getWindow().setFlags(
                     WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -40,6 +45,8 @@ public class AddGrade extends AppCompatActivity {
             getSupportActionBar().hide();
 
             addGradeSpinner = findViewById(R.id.addGradeSpiner);
+            btnAddGrade = findViewById(R.id.btnContinueAddGrade);
+            btnAddGrade.setOnClickListener(this);
 
             c = DB.readDisciplineData();
 
@@ -60,6 +67,28 @@ public class AddGrade extends AppCompatActivity {
 
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
+            }
+        } finally {
+            return;
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        int itemPosition;
+        String selectedItem;
+
+        try {
+            if (view.getId() == R.id.btnContinueAddGrade) {
+                Intent it = new Intent(
+                        getApplicationContext(),
+                        AddNewGrade.class
+                );
+
+                itemPosition = addGradeSpinner.getSelectedItemPosition();
+                selectedItem = disciplines.get(itemPosition);
+                it.putExtra("discipline", selectedItem);
+                startActivity(it);
             }
         } finally {
             return;
