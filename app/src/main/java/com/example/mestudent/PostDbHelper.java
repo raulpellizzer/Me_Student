@@ -311,6 +311,7 @@ public class PostDbHelper extends SQLiteOpenHelper {
         Cursor c = null;
         int idiscName;
         boolean discExists = false;
+        String empty = "";
 
         try {
             SQLiteDatabase DB = this.getWritableDatabase();
@@ -329,16 +330,17 @@ public class PostDbHelper extends SQLiteOpenHelper {
             if (!discExists) {
                 ContentValues contentValues = new ContentValues();
                 contentValues.put(GRADE_DISCIPLINE_COLUMN_NAME, discName);
-                contentValues.put(GRADE_COLUMN_NAME, ""); // CREATE AN EMPTY JSON
+                contentValues.put(GRADE_COLUMN_NAME, empty);
                 result = DB.insert(GRADE_TABLE_NAME, null, contentValues);
             } else {
                 result = -1;
             }
 
-            if (result == -1)
+            if (result == -1) {
                 return false;
-            else
+            } else {
                 return true;
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -346,7 +348,7 @@ public class PostDbHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Boolean deleteDisciplineGrades(String discName){
+    public boolean deleteDisciplineGrades(String discName){
         Cursor c = null;
         SQLiteDatabase DB = this.getWritableDatabase();
         String sqliteQuery;
@@ -388,6 +390,42 @@ public class PostDbHelper extends SQLiteOpenHelper {
         } catch (Exception e) {
             e.printStackTrace();
             return c;
+        }
+    }
+
+    public boolean insertNewGrade(String discipline, String grade){
+        int iDiscName;
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor c = null;
+        String gradeTableName;
+        String sqliteQuery;
+        boolean queryExecuted = false;
+
+        gradeTableName = GRADE_TABLE_NAME;
+
+        try {
+            String[] columns = new String[]{GRADE_COLUMN_NAME, GRADE_DISCIPLINE_COLUMN_NAME};
+            c = DB.query(gradeTableName, columns, null, null, null, null, null);
+
+            iDiscName = c.getColumnIndex(GRADE_DISCIPLINE_COLUMN_NAME);
+
+            for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+                if ((c.getString(iDiscName).equals(discipline))) {
+                    sqliteQuery = "UPDATE " + GRADE_TABLE_NAME +
+                            " SET " + GRADE_COLUMN_NAME + " = '" + grade + "'" +
+                            " WHERE " + GRADE_DISCIPLINE_COLUMN_NAME + " = '" + discipline + "';";
+                    DB.execSQL(sqliteQuery);
+                    queryExecuted = true;
+                }
+            }
+
+            if (queryExecuted)
+                return true;
+            else
+                return false;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
     }
 

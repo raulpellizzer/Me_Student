@@ -36,6 +36,8 @@ public class AddNewGrade extends AppCompatActivity implements View.OnClickListen
             );
             getSupportActionBar().hide();
 
+            DB = new PostDbHelper(this);
+
             edtGradeDesc = findViewById(R.id.edtGradeDesc);
             edtGradeNumber = findViewById(R.id.edtGradeNumber);
             btnSaveNewGrade = findViewById(R.id.btnSaveNewGrade);
@@ -58,6 +60,8 @@ public class AddNewGrade extends AppCompatActivity implements View.OnClickListen
     public void onClick(View view) {
         Cursor c;
         int iDiscName, iDiscGrade;
+        String grades = "";
+        boolean result = false;
 
         try{
             if (view.getId() == R.id.btnSaveNewGrade) {
@@ -67,43 +71,43 @@ public class AddNewGrade extends AppCompatActivity implements View.OnClickListen
                 gradeDesc = edtGradeDesc.getText().toString();
                 gradeNumber = edtGradeNumber.getText().toString();
 
-                newGrade = gradeDesc + ": " + gradeNumber;
+                newGrade = gradeDesc + ":" + gradeNumber + "\n";
 
                 c = DB.readGradeData();
                 iDiscName = c.getColumnIndex(GRADE_DISCIPLINE_COLUMN_NAME);
                 iDiscGrade = c.getColumnIndex(GRADE_COLUMN_NAME);
 
                 for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
-//                    if ((c.getString(iDiscName).equals(selectedItem))) {
-//
-//                    }
+                    if ((c.getString(iDiscName).equals(discipline))) {
+                        grades = c.getString(iDiscGrade);
+                        break;
+                    }
                 }
 
+                grades = grades + newGrade;
 
+                result = DB.insertNewGrade(discipline, grades);
 
+                if(result) {
+                    Context context = getApplicationContext();
+                    CharSequence text = "Grade successfully added.";
+                    int duration = Toast.LENGTH_LONG;
 
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                } else {
+                    Context context = getApplicationContext();
+                    CharSequence text = "Error";
+                    int duration = Toast.LENGTH_LONG;
 
-
-
-
-
-
-
-
-
-
-//                Context context = getApplicationContext();
-//                CharSequence text = newGrade;
-//                int duration = Toast.LENGTH_LONG;
-//
-//                Toast toast = Toast.makeText(context, text, duration);
-//                toast.show();
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                }
             }
-
-
 
         } catch (Exception e) {
             e.printStackTrace();
+            return;
         }
     }
 }
