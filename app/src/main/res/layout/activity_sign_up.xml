@@ -1,85 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/colorBackground"
-    tools:context=".signUp">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/colorBackground">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:paddingTop="10sp"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:text="@string/signUpNewUser">
-    </TextView>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="15sp">
-    </TextView>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:paddingLeft="10sp"
-        android:text="@string/signUpLogin"/>
-
-
-    <EditText
-        android:id="@+id/edtTextSignUpLogin"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".signUp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:paddingTop="70sp"
-        android:paddingLeft="10sp"
-        android:text="@string/signUpPassword"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:paddingTop="10sp">
+        </TextView>
 
-    <EditText
-        android:id="@+id/edtTextSignUpPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:password="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:text="@string/app_name">
+        </TextView>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:paddingTop="70sp"
-        android:paddingLeft="10sp"
-        android:text="@string/confirmPassword"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingTop="30sp"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:text="@string/signUpNewUser">
+        </TextView>
 
-    <EditText
-        android:id="@+id/edtTextConfPass"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:password="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="15sp">
+        </TextView>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="15sp">
-    </TextView>
-
-    <Button
-        android:id="@+id/btnSignUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/SignUp"
-        android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:paddingLeft="10sp"
+            android:text="@string/signUpLogin"/>
 
 
-</LinearLayout>
+        <EditText
+            android:id="@+id/edtTextSignUpLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:paddingTop="70sp"
+            android:paddingLeft="10sp"
+            android:text="@string/signUpPassword"/>
+
+        <EditText
+            android:id="@+id/edtTextSignUpPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:password="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:paddingTop="70sp"
+            android:paddingLeft="10sp"
+            android:text="@string/confirmPassword"/>
+
+        <EditText
+            android:id="@+id/edtTextConfPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:password="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="15sp">
+        </TextView>
+
+        <Button
+            android:id="@+id/btnSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/SignUp"
+            android:layout_gravity="center"/>
+
+
+    </LinearLayout>
+</ScrollView>

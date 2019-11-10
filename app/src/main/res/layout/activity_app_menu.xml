@@ -1,179 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/colorBackground">
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/colorBackground"
-    tools:context=".MainActivity">
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="15sp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:text="@string/username">
-        </TextView>
-
-        <TextView
-            android:id="@+id/txtViewUser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10sp"
-            android:textSize="15sp">
-        </TextView>
-
-    </LinearLayout>
-
-    <TableLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:shrinkColumns="*"
-        android:stretchColumns="*"
-        android:background="@color/colorBackground">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
 
-        <TableRow
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
-            android:gravity="center_horizontal">
+            android:orientation="horizontal"
+            android:layout_margin="15sp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="35sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
-                android:text="@string/app_name">
+                android:text="@string/username">
             </TextView>
 
-        </TableRow>
+            <TextView
+                android:id="@+id/txtViewUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10sp"
+                android:textSize="15sp">
+            </TextView>
 
-        <TableRow
+        </LinearLayout>
+
+        <TableLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
-            android:paddingTop="50sp"
-            android:gravity="center_horizontal">
+            android:shrinkColumns="*"
+            android:stretchColumns="*"
+            android:background="@color/colorBackground">
 
-            <Button
-                android:id="@+id/btnAddDisc"
-                android:layout_width="wrap_content"
+            <TableRow
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10sp"
-                android:text="@string/btnAddDisc">
-            </Button>
+                android:layout_width="fill_parent"
+                android:gravity="center_horizontal">
 
-            <Button
-                android:id="@+id/btnAddNote"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="35sp"
+                    android:textStyle="bold"
+                    android:text="@string/app_name">
+                </TextView>
+
+            </TableRow>
+
+            <TableRow
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10sp"
-                android:text="@string/btnAddGrade">
-            </Button>
+                android:layout_width="fill_parent"
+                android:paddingTop="50sp"
+                android:gravity="center_horizontal">
 
-        </TableRow>
+                <Button
+                    android:id="@+id/btnAddDisc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10sp"
+                    android:text="@string/btnAddDisc">
+                </Button>
 
-        <TableRow
+                <Button
+                    android:id="@+id/btnAddNote"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10sp"
+                    android:text="@string/btnAddGrade">
+                </Button>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:paddingTop="25sp"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/btnViewDisc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10sp"
+                    android:text="@string/btnSearchDisc">
+                </Button>
+
+                <Button
+                    android:id="@+id/btnRemoveDisc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10sp"
+                    android:text="@string/btnRmvDisc">
+                </Button>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:paddingTop="25sp"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/btnEditDisc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10sp"
+                    android:text="@string/btnEditDisc">
+                </Button>
+
+                <Button
+                    android:id="@+id/btnReset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10sp"
+                    android:text="@string/btnReset">
+                </Button>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:paddingTop="25sp"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/btnDiscInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10sp"
+                    android:text="@string/disciplineInfo">
+                </Button>
+
+                <Button
+                    android:id="@+id/btnToBeImplemented"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10sp"
+                    android:text="API  (Impl.)">
+                </Button>
+
+            </TableRow>
+
+        </TableLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
-            android:paddingTop="25sp"
-            android:gravity="center_horizontal">
+            android:text=""
+            android:paddingTop="50sp">
+        </TextView>
 
-            <Button
-                android:id="@+id/btnViewDisc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10sp"
-                android:text="@string/btnSearchDisc">
-            </Button>
-
-            <Button
-                android:id="@+id/btnRemoveDisc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10sp"
-                android:text="@string/btnRmvDisc">
-            </Button>
-
-        </TableRow>
-
-        <TableRow
+        <Button
+            android:id="@+id/btnConfig"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
-            android:paddingTop="25sp"
-            android:gravity="center_horizontal">
+            android:layout_gravity="center"
+            android:text="@string/btnConfig">
+        </Button>
 
-            <Button
-                android:id="@+id/btnEditDisc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10sp"
-                android:text="@string/btnEditDisc">
-            </Button>
-
-            <Button
-                android:id="@+id/btnReset"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10sp"
-                android:text="@string/btnReset">
-            </Button>
-
-        </TableRow>
-
-        <TableRow
+        <Button
+            android:id="@+id/btnAbout"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
-            android:paddingTop="25sp"
-            android:gravity="center_horizontal">
+            android:layout_gravity="center"
+            android:text="@string/btnAbout">
+        </Button>
 
-            <Button
-                android:id="@+id/btnDiscInfo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10sp"
-                android:text="@string/disciplineInfo">
-            </Button>
-
-            <Button
-                android:id="@+id/btnToBeImplemented"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10sp"
-                android:text="API  (Impl.)">
-            </Button>
-
-        </TableRow>
-
-    </TableLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:paddingTop="50sp">
-    </TextView>
-
-    <Button
-        android:id="@+id/btnConfig"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/btnConfig">
-    </Button>
-
-    <Button
-        android:id="@+id/btnAbout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/btnAbout">
-    </Button>
-
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

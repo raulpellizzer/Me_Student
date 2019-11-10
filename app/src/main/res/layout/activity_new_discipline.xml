@@ -1,105 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/colorBackground"
-    tools:context=".newDiscipline">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/colorBackground">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textStyle="bold"
-        android:paddingTop="10sp"
-        android:textSize="30sp"
-        android:text="@string/btnAddDisc">
-    </TextView>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="15sp">
-    </TextView>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:paddingTop="15sp"
-        android:paddingLeft="10sp"
-        android:text="@string/nameNewDisc">
-    </TextView>
-
-    <EditText
-        android:id="@+id/edtNewDiscName"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </EditText>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".newDiscipline">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:paddingTop="15sp"
-        android:paddingLeft="10sp"
-        android:text="@string/nameNewDiscTeacher">
-    </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:paddingTop="10sp">
+        </TextView>
 
-    <EditText
-        android:id="@+id/edtNewDiscTeacherName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </EditText>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:text="@string/app_name">
+        </TextView>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:paddingTop="15sp"
-        android:paddingLeft="10sp"
-        android:text="@string/classsroom">
-    </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:paddingTop="30sp"
+            android:textSize="30sp"
+            android:text="@string/btnAddDisc">
+        </TextView>
 
-    <EditText
-        android:id="@+id/edtClassroom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </EditText>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="15sp">
+        </TextView>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:paddingTop="15sp"
-        android:paddingLeft="10sp"
-        android:text="@string/dayOfClass">
-    </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingTop="15sp"
+            android:paddingLeft="10sp"
+            android:text="@string/nameNewDisc">
+        </TextView>
 
-    <EditText
-        android:id="@+id/edtClassDay"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </EditText>
+        <EditText
+            android:id="@+id/edtNewDiscName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </EditText>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="20sp">
-    </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingTop="15sp"
+            android:paddingLeft="10sp"
+            android:text="@string/nameNewDiscTeacher">
+        </TextView>
 
-    <Button
-        android:id="@+id/btnRegisterNewDisc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/saveNewDisc">
-    </Button>
+        <EditText
+            android:id="@+id/edtNewDiscTeacherName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </EditText>
 
-</LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingTop="15sp"
+            android:paddingLeft="10sp"
+            android:text="@string/classsroom">
+        </TextView>
+
+        <EditText
+            android:id="@+id/edtClassroom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingTop="15sp"
+            android:paddingLeft="10sp"
+            android:text="@string/dayOfClass">
+        </TextView>
+
+        <EditText
+            android:id="@+id/edtClassDay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="20sp">
+        </TextView>
+
+        <Button
+            android:id="@+id/btnRegisterNewDisc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/saveNewDisc">
+        </Button>
+
+    </LinearLayout>
+</ScrollView>
