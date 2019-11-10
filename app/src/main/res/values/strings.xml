@@ -39,5 +39,10 @@
     <string name="gradeNumber">Grade  (Ex: 7, 8.5)</string>
     <string name="discipline">Discipline: </string>
     <string name="disciplineInfo">Discipline Info</string>
+    <string name="disciplineName">Discipline: </string>
+    <string name="disciplineTeacher">Teacher: </string>
+    <string name="disciplineClass">Class: </string>
+    <string name="disciplineDate">Day: </string>
+    <string name="disciplineGrades">Grades: </string>
 
 </resources>

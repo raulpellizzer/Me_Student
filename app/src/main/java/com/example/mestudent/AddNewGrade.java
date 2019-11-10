@@ -71,7 +71,7 @@ public class AddNewGrade extends AppCompatActivity implements View.OnClickListen
                 gradeDesc = edtGradeDesc.getText().toString();
                 gradeNumber = edtGradeNumber.getText().toString();
 
-                newGrade = gradeDesc + ":" + gradeNumber + "\n";
+                newGrade = gradeDesc + " : " + gradeNumber + "\n";
 
                 c = DB.readGradeData();
                 iDiscName = c.getColumnIndex(GRADE_DISCIPLINE_COLUMN_NAME);

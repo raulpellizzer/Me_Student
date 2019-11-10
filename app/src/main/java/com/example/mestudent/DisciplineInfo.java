@@ -3,6 +3,7 @@ package com.example.mestudent;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -21,8 +22,8 @@ public class DisciplineInfo extends AppCompatActivity implements View.OnClickLis
     int iDiscName;
     PostDbHelper DB;
     Cursor c;
-    private Spinner DiscInfoSpinner;  // removeDiscSpinner
-    private Button btnDiscInfoContinue;  // btnRmvDiscContinue
+    private Spinner DiscInfoSpinner;
+    private Button btnDiscInfoContinue;
     private List<String> disciplines = new ArrayList<>();
 
     @Override
@@ -71,6 +72,23 @@ public class DisciplineInfo extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
+        int itemPosition;
+        String selectedItem;
 
+        try {
+            if (view.getId() == R.id.btnContinueDiscInfo) {
+                Intent it = new Intent(
+                        getApplicationContext(),
+                        SelectedDiscInfo.class
+                );
+
+                itemPosition = DiscInfoSpinner.getSelectedItemPosition();
+                selectedItem = disciplines.get(itemPosition);
+                it.putExtra("discipline", selectedItem);
+                startActivity(it);
+            }
+        } finally {
+            return;
+        }
     }
 }
