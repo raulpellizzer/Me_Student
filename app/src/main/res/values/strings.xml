@@ -38,5 +38,6 @@
     <string name="gradeDescription">Description  (Ex: P1, P2, Work1)</string>
     <string name="gradeNumber">Grade  (Ex: 7, 8.5)</string>
     <string name="discipline">Discipline: </string>
+    <string name="disciplineInfo">Discipline Info</string>
 
 </resources>

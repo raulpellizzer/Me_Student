@@ -18,6 +18,7 @@ public class appMenu extends AppCompatActivity implements View.OnClickListener{
     private Button btnEditDisc;
     private Button btnResetSemester;
     private Button btnConfig;
+    private Button btnDiscInfo;
     private String username;
     private TextView txtViewUser;
 
@@ -33,8 +34,6 @@ public class appMenu extends AppCompatActivity implements View.OnClickListener{
             );
             getSupportActionBar().hide();
 
-            ViewDisciplines v = new ViewDisciplines();
-
             btnNewDisc = findViewById(R.id.btnAddDisc);
             btnAbout = findViewById(R.id.btnAbout);
             btnAddNote = findViewById(R.id.btnAddNote);
@@ -44,6 +43,7 @@ public class appMenu extends AppCompatActivity implements View.OnClickListener{
             btnResetSemester = findViewById(R.id.btnReset);
             btnConfig = findViewById(R.id.btnConfig);
             txtViewUser = findViewById(R.id.txtViewUser);
+            btnDiscInfo = findViewById(R.id.btnDiscInfo);
 
             btnNewDisc.setOnClickListener(this);
             btnAbout.setOnClickListener(this);
@@ -53,6 +53,7 @@ public class appMenu extends AppCompatActivity implements View.OnClickListener{
             btnEditDisc.setOnClickListener(this);
             btnResetSemester.setOnClickListener(this);
             btnConfig.setOnClickListener(this);
+            btnDiscInfo.setOnClickListener(this);
 
             Intent it = getIntent();
             if (it != null) {
@@ -131,6 +132,14 @@ public class appMenu extends AppCompatActivity implements View.OnClickListener{
                             Config.class
                     );
                     startActivity(itConfig);
+                    break;
+
+                case R.id.btnDiscInfo:
+                    Intent itDiscInfo = new Intent(
+                            getApplicationContext(),
+                            DisciplineInfo.class
+                    );
+                    startActivity(itDiscInfo);
                     break;
 
                 default:

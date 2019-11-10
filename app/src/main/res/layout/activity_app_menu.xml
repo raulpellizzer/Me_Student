@@ -127,13 +127,37 @@
 
         </TableRow>
 
+        <TableRow
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:paddingTop="25sp"
+            android:gravity="center_horizontal">
+
+            <Button
+                android:id="@+id/btnDiscInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:text="@string/disciplineInfo">
+            </Button>
+
+            <Button
+                android:id="@+id/btnToBeImplemented"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:text="API  (Impl.)">
+            </Button>
+
+        </TableRow>
+
     </TableLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
-        android:paddingTop="100sp">
+        android:paddingTop="50sp">
     </TextView>
 
     <Button

@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddNewGrade"></activity>
+        <activity android:name=".DisciplineInfo"></activity>
+        <activity android:name=".AddNewGrade" />
         <activity android:name=".EditDisciplineSave" />
         <activity android:name=".Config" />
         <activity android:name=".ResetAll" />
