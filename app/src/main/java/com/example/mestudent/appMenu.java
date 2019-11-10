@@ -33,6 +33,8 @@ public class appMenu extends AppCompatActivity implements View.OnClickListener{
             );
             getSupportActionBar().hide();
 
+            ViewDisciplines v = new ViewDisciplines();
+
             btnNewDisc = findViewById(R.id.btnAddDisc);
             btnAbout = findViewById(R.id.btnAbout);
             btnAddNote = findViewById(R.id.btnAddNote);

@@ -1,5 +1,7 @@
 package com.example.mestudent;
 
+import android.database.Cursor;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -16,35 +18,6 @@ public class DisciplinesInfo extends AppCompatActivity {
         this.discTeacherName = discTeacherName;
         this.discClassroom = discClassroom;
         this.discDay = discDay;
-    }
-
-    public static List<DisciplinesInfo> listAll(){
-        List<DisciplinesInfo> disciplines = new ArrayList<>();
-        disciplines.add(new DisciplinesInfo("Nome1", "Nome1", "Nome1", "Nome1"));
-        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
-        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
-        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
-        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
-        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
-        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
-        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
-        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
-        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
-        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
-        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
-        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
-        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
-        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
-        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
-        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
-        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
-        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
-        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
-        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
-        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
-        disciplines.add(new DisciplinesInfo("Nome2", "Nome2", "Nome2", "Nome2"));
-
-        return disciplines;
     }
 
     public String getDiscName(){

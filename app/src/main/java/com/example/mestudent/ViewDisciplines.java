@@ -11,6 +11,9 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.example.mestudent.schema.dtbaseCONSTS.CLASSROOM_COLUMN_NAME;
 import static com.example.mestudent.schema.dtbaseCONSTS.DATE_COLUMN_NAME;
 import static com.example.mestudent.schema.dtbaseCONSTS.DISCIPLINE_COLUMN_NAME;
@@ -31,10 +34,27 @@ public class ViewDisciplines extends AppCompatActivity {
         getSupportActionBar().hide();
 
         viewDisciplines = findViewById(R.id.recViewAllDisc);
-
-        viewDisciplines.setAdapter(new DisciplineAdapterRecycler(DisciplinesInfo.listAll(), this));
+        viewDisciplines.setAdapter(new DisciplineAdapterRecycler(this.listAll(), this));
         RecyclerView.LayoutManager layout = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
 
         viewDisciplines.setLayoutManager(layout);
+    }
+
+    public List<DisciplinesInfo> listAll(){
+        int iDiscName;
+        List<DisciplinesInfo> disciplines = new ArrayList<>();
+        PostDbHelper DB = new PostDbHelper(this);
+        Cursor c;
+
+        c = DB.readDisciplineData();
+
+        if (c != null) {
+            iDiscName = c.getColumnIndex(DISCIPLINE_COLUMN_NAME);
+            for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+                disciplines.add(new DisciplinesInfo(c.getString(iDiscName), c.getString(iDiscName), c.getString(iDiscName), c.getString(iDiscName)));
+            }
+        }
+
+        return disciplines;
     }
 }
