@@ -87,10 +87,6 @@ public class SelectedDiscInfo extends AppCompatActivity {
                     }
                 }
 
-                if (discGrades == "") {
-                    txtViewDiscGrades.setText("No grades were submited yet.");
-                }
-
                 txtViewDiscGrades.setText(discGrades);
             } else {
                 Context context = getApplicationContext();
