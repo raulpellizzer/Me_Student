@@ -18,7 +18,7 @@
     <string name="signUpPassword">Enter Password</string>
     <string name="confirmPassword">Confirm Password</string>
     <string name="SignUp">Sign Me Up!</string>
-    <string name="about">This app was developed in the year of 2019 by the graduante student Raul Pellizzer, for the discipline Dispositivos Móveis, lectured by professor Dr. Rodrigo Plotze. Me, Student has to objective of helping students that are in college to view their grades and classrooms more easily.</string>
+    <string name="about">This app was developed in the year of 2019 by the graduante student Raul Pellizzer, for the discipline Dispositivos Móveis, lectured by professor Dr. Rodrigo Plotze. Me, Student has the objective of helping students that are in college to view their grades and classrooms more easily.</string>
     <string name="viewDiscAddGrade">Select a discipline</string>
     <string name="addGradeText">Add new grade</string>
     <string name="viewAllDisc">Your current disciplines</string>

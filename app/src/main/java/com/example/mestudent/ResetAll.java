@@ -13,7 +13,7 @@ public class ResetAll extends AppCompatActivity implements View.OnClickListener 
     private RadioButton radioNo, radioYes;
     private Button btnResetAll;
     PostDbHelper DB;
-    boolean resultReset, resultCreate;
+    boolean resultReset, resultCreateDisc, resultCreateGrade;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +38,10 @@ public class ResetAll extends AppCompatActivity implements View.OnClickListener 
             if (view.getId() == R.id.btnResetSemester && radioYes.isChecked()) {
 
                 resultReset = DB.resetSemester();
-                resultCreate = DB.createDisciplinesTable();
+                resultCreateDisc = DB.createDisciplinesTable();
+                resultCreateGrade = DB.createGradesTable();
 
-                if (resultReset = true && resultCreate == true) {
+                if (resultReset = true && resultCreateDisc == true && resultCreateGrade == true) {
                     Context context = getApplicationContext();
                     CharSequence text = "Your semester has been reseted.";
                     int duration = Toast.LENGTH_LONG;

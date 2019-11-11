@@ -239,6 +239,21 @@ public class PostDbHelper extends SQLiteOpenHelper {
         return result;
     }
 
+    public boolean createGradesTable() {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        boolean result;
+
+        try{
+            DB.execSQL(SQL_CREATE_GRADES);
+            result = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = false;
+            return result;
+        }
+        return result;
+    }
+
     public Boolean deleteDiscipline(String discName){
         Cursor c = null;
         SQLiteDatabase DB = this.getWritableDatabase();
