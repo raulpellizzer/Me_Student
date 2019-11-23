@@ -8,7 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import static com.example.mestudent.schema.dtbaseCONSTS.AUTH_COLUMN_NAME;
 import static com.example.mestudent.schema.dtbaseCONSTS.CLASSROOM_COLUMN_NAME;
+import static com.example.mestudent.schema.dtbaseCONSTS.CONFIG_TABLE_NAME;
 import static com.example.mestudent.schema.dtbaseCONSTS.DATABASE_NAME;
 import static com.example.mestudent.schema.dtbaseCONSTS.DATABASE_VERSION;
 import static com.example.mestudent.schema.dtbaseCONSTS.DATE_COLUMN_NAME;
@@ -21,6 +23,7 @@ import static com.example.mestudent.schema.dtbaseCONSTS.LOGIN_TABLE_NAME;
 import static com.example.mestudent.schema.dtbaseCONSTS.LOGIN_COLUMN_NAME;
 import static com.example.mestudent.schema.dtbaseCONSTS.PASSWORD_COLUMN_NAME;
 import static com.example.mestudent.schema.dtbaseCONSTS.TEACHER_COLUMN_NAME;
+import static com.example.mestudent.schema.dtbaseCONSTS.THEME_COLUMN_NAME;
 
 public class PostDbHelper extends SQLiteOpenHelper {
 
@@ -46,6 +49,12 @@ public class PostDbHelper extends SQLiteOpenHelper {
                     GRADE_DISCIPLINE_COLUMN_NAME + TEXT_TYPE + COMMA_SEP +
                     GRADE_COLUMN_NAME + TEXT_TYPE + " )";
 
+    private static final String SQL_CREATE_CONFIG =
+            "CREATE TABLE " + CONFIG_TABLE_NAME + " (" +
+                    schema.dtbaseCONSTS._ID + " INTEGER PRIMARY KEY," +
+                    AUTH_COLUMN_NAME + TEXT_TYPE + COMMA_SEP +
+                    THEME_COLUMN_NAME + TEXT_TYPE + " )";
+
     private static final String SQL_DELETE_USER =
             "DROP TABLE IF EXISTS " + LOGIN_TABLE_NAME;
 
@@ -54,6 +63,9 @@ public class PostDbHelper extends SQLiteOpenHelper {
 
     private static final String SQL_DELETE_GRADES =
             "DROP TABLE IF EXISTS " + GRADE_TABLE_NAME;
+
+    private static final String SQL_DELETE_CONFIG =
+            "DROP TABLE IF EXISTS " + CONFIG_TABLE_NAME;
 
     public PostDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -67,12 +79,14 @@ public class PostDbHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_USER);
         db.execSQL(SQL_CREATE_DISCIPLINE);
         db.execSQL(SQL_CREATE_GRADES);
+        db.execSQL(SQL_CREATE_CONFIG);
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(SQL_DELETE_USER);
         db.execSQL(SQL_DELETE_DISCIPLINES);
         db.execSQL(SQL_DELETE_GRADES);
+        db.execSQL(SQL_DELETE_CONFIG);
         onCreate(db);
     }
 
@@ -444,7 +458,97 @@ public class PostDbHelper extends SQLiteOpenHelper {
         }
     }
 
+    public Cursor readConfigData () {
+        Cursor c = null;
+        String configTableName;
 
+        configTableName = CONFIG_TABLE_NAME;
+
+        try{
+            SQLiteDatabase DB = this.getReadableDatabase();
+            String[] columns = new String[]{AUTH_COLUMN_NAME, THEME_COLUMN_NAME};
+            c = DB.query(configTableName, columns, null, null, null, null, null);
+
+            return c;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return c;
+        }
+    }
+
+    public boolean initializeConfig() {
+        long result;
+
+        try {
+            SQLiteDatabase DB = this.getWritableDatabase();
+
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(AUTH_COLUMN_NAME, "AUTH:YES");
+            contentValues.put(THEME_COLUMN_NAME, "WHITE:YES");
+            result = DB.insert(CONFIG_TABLE_NAME, null, contentValues);
+
+            if (result != -1)
+                return true;
+            else
+                return false;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean toggleAuthOn(){
+        Cursor c;
+        int iAuth;
+        String currentAuth = "", SQLiteUpdateQuery;
+
+        try {
+            SQLiteDatabase DB = this.getWritableDatabase();
+            c = this.readConfigData();
+            c.moveToFirst();
+
+            iAuth = c.getColumnIndex(AUTH_COLUMN_NAME);
+            currentAuth = c.getString(iAuth);
+
+            SQLiteUpdateQuery = "UPDATE " + CONFIG_TABLE_NAME +
+                    " SET " + AUTH_COLUMN_NAME + " = '" + "AUTH:YES" + "'" +
+                    " WHERE " + AUTH_COLUMN_NAME + " = '" + currentAuth + "';";
+
+            DB.execSQL(SQLiteUpdateQuery);
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean toggleAuthOff(){
+        Cursor c;
+        int iAuth;
+        String currentAuth = "", SQLiteUpdateQuery;
+
+        try {
+            SQLiteDatabase DB = this.getWritableDatabase();
+            c = this.readConfigData();
+            c.moveToFirst();
+
+            iAuth = c.getColumnIndex(AUTH_COLUMN_NAME);
+            currentAuth = c.getString(iAuth);
+
+            SQLiteUpdateQuery = "UPDATE " + CONFIG_TABLE_NAME +
+                    " SET " + AUTH_COLUMN_NAME + " = '" + "AUTH:NO" + "'" +
+                    " WHERE " + AUTH_COLUMN_NAME + " = '" + currentAuth + "';";
+
+            DB.execSQL(SQLiteUpdateQuery);
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
 }
 

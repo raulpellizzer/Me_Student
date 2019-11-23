@@ -11,21 +11,34 @@ import android.app.PendingIntent;
 import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.Switch;
+import android.widget.Toast;
+
+import static com.example.mestudent.schema.dtbaseCONSTS.AUTH_COLUMN_NAME;
 
 public class Config extends AppCompatActivity implements View.OnClickListener {
     private Button btnConfig;
+    private CheckBox ckBoxAuth;
+    private Switch swTheme;
     private AlertDialog alert;
+    private PostDbHelper DB;
+    private Cursor c;
+    private int iAuth, iTheme;
+    private String currentAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_config);
+        DB = new PostDbHelper(this);
 
         try {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -39,12 +52,23 @@ public class Config extends AppCompatActivity implements View.OnClickListener {
             );
             getSupportActionBar().hide();
 
+            swTheme = findViewById(R.id.swt);
+            ckBoxAuth = findViewById(R.id.ckbAuth);
             btnConfig = findViewById(R.id.btnSaveConfig);
             btnConfig.setOnClickListener(this);
+
+            c = DB.readConfigData();
+            c.moveToFirst();
+
+            iAuth = c.getColumnIndex(AUTH_COLUMN_NAME);
+            currentAuth = c.getString(iAuth);
+
+            if (currentAuth.equals("AUTH:YES"))
+                ckBoxAuth.toggle();
+
         } finally {
             return;
         }
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -53,7 +77,28 @@ public class Config extends AppCompatActivity implements View.OnClickListener {
 
         try {
             if (view.getId() == R.id.btnSaveConfig) {
-                // Configurar a parte do negativo (falha na operação)
+                if (ckBoxAuth.isChecked()) {
+                    DB.toggleAuthOn();
+
+                    Context context = getApplicationContext();
+                    CharSequence text = "Authentification is now necessary.";
+                    int duration = Toast.LENGTH_LONG;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                } else {
+                    DB.toggleAuthOff();
+                    Context context = getApplicationContext();
+                    CharSequence text = "Authentification is no longer necessary.";
+                    int duration = Toast.LENGTH_LONG;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                }
+
+
+
+
                 CriarNotificacao("Me,Student", "Settings updated successfully");
                 alert.show();
             }

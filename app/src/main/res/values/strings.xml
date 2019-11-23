@@ -29,7 +29,7 @@
     <string name="radYes">Yes, im sure i want to proceed</string>
     <string name="radNo">No, stop this madness right now!</string>
     <string name="btnConfig">Config</string>
-    <string name="ckbNot">Allow Notifications</string>
+    <string name="ckbAuth">Request Authentication in Loggin</string>
     <string name="continueAddGrade">Continue</string>
     <string name="username">User:</string>
     <string name="signUpNewUser">New User</string>
